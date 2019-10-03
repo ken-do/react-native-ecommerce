@@ -1,0 +1,30 @@
+{
+    "extends": [
+        "tslint:recommended",
+        "tslint-eslint-rules",
+        "tslint-react",
+        "tslint-config-prettier"
+    ],
+    "jsRules": {},
+    "rules": {
+        "member-access": false,
+        "ordered-imports": false,
+        "no-console": false,
+        "semicolon": false,
+        "jsx-no-lambda": false,
+        "interface-name": false,
+        "object-literal-sort-keys": false,
+        "quotemark": [
+            true,
+            "single",
+            "jsx-double"
+        ]
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": [
+            "config/**/*.js",
+            "node_modules/**/*.ts"
+        ]
+    }
+}
