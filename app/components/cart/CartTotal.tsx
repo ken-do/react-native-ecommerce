@@ -1,9 +1,13 @@
 import React from 'react';
 import { FlatList, View, Text, StyleSheet, ScrollView } from 'react-native';
 import CartTotalItem from './CartTotalItem';
+import { ICartItem } from './CartItem';
 
-const CartTotal:React.FC = ( {items} ) => {
-    const total = items.reduce((total, item) => total + (item.amount * item.price), 0);
+interface IProps {
+    items: ICartItem[],
+}
+const CartTotal:React.FC<IProps> = ( {items} ) => {
+    const total = items.reduce((acc, item) => acc + (item.amount * item.price), 0);
     return (
         <ScrollView style={styles.container}>
             <FlatList

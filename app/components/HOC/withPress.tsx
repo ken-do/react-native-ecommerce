@@ -2,8 +2,7 @@ import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 
 interface IProps {
-    onPress: () => void,
-    buttonStyle?: Object,
+    onPress: () => void;
     [propName: string]: any;
 }
 

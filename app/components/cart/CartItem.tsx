@@ -3,13 +3,23 @@ import { StyleSheet, View } from 'react-native';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import ButtonAddWithPress from '../icons/IconAddWithPress';
 import ButtonRemoveWithPress from '../icons/IconRemoveWithPress';
+import { IProduct } from '../product/data';
 
-const CartItem: React.FC = ({ item }) => {
+
+export interface ICartItem extends IProduct {
+    amount: number
+}
+
+interface IProps {
+    item: ICartItem
+}
+
+const CartItem: React.FC<IProps> = ({ item }) => {
     return (
         <Card style={styles.container}>
             <Card.Content  style={styles.content}>
                 <View style={styles.cover}>
-                    <Card.Cover style={styles.img} source={item.img} resizeMode='contain' />
+                    <Card.Cover style={styles.img} source={item.img} resizeMode="contain" />
                 </View>
                 <View style={styles.details}>
                     <View>

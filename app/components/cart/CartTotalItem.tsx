@@ -1,7 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { ICartItem } from './CartItem';
 
-const CartTotalItem:React.FC = ({item : { title, id, price, amount }}) => {
+interface IProps {
+    item : ICartItem
+}
+const CartTotalItem:React.FC<IProps> = ({item : { title, id, price, amount }}) => {
     return (
         <View style={styles.item}>
             <View style={styles.itemInfo}>

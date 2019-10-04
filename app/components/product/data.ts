@@ -1,9 +1,9 @@
 export interface IProduct {
-    readonly id: number,
-    readonly title: string,
-    readonly desc: string,
-    readonly price: number,
-    readonly img: ImageData
+    readonly id: number;
+    readonly title: string;
+    readonly desc: string;
+    readonly price: number;
+    readonly img: ImageData;
 }
 
 const products: ReadonlyArray<IProduct> = [

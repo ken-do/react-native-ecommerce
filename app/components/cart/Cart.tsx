@@ -4,23 +4,22 @@ import CartItem from './CartItem';
 
 import CartTotal from './CartTotal';
 import ButtonCheckout from '../icons/ButtonCheckout';
+import { ICartItem } from './CartItem';
 
-interface Iitems {
-    id: number,
-    title: String,
-    desc: String,
-    price: number
-    img: String,
+interface IProps {
+    items: ICartItem[];
+    navigation: { navigate(d: string, params: { items: ICartItem[] }): void };
+    checkAsyncStore(): void
 }
 
-const Cart: React.FC = (props) => {
+const Cart: React.FC<IProps> = (props) => {
 
     const { items, navigation: { navigate } } = props;
-    
+
     useEffect(() => {
         props.checkAsyncStore();
     });
-    
+
     const checkout = () => {
         navigate('Checkout', { items });
     }

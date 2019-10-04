@@ -4,7 +4,7 @@ import { Card, Title, Paragraph } from 'react-native-paper';
 import IconCartWithPress from '../icons/IconAddWithPress';
 import { IProduct } from './data';
 
-interface IProductProps {
+export interface IProductProps {
     readonly product: IProduct
 } 
 
