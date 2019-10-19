@@ -2,16 +2,17 @@ import React from 'react';
 import { ScrollView, Alert} from 'react-native';
 import CartTotal from '../cart/CartTotal';
 import CheckoutForm from './CheckoutForm';
-import { IProduct } from '../product/data';
+import { ICartItem } from '../cart/CartItem';
 
 interface INavigation {
-    state:  { params : { items : IProduct[] }};
+    state:  { params : { items : ICartItem[] }};
     navigate(screen: string) : void;
 }
 interface IProps {
     navigation: INavigation;
     clearCart() : void;
 } 
+
 
 const Checkout: React.FC<IProps> = ({ clearCart, navigation: { navigate, state : { params: { items } }}}) => {
     

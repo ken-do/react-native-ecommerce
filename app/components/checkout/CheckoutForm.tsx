@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { Formik } from 'formik';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, NativeSyntheticEvent, NativeTouchEvent } from 'react-native';
 import * as Yup from 'yup';
+import { Formik, FormikProps } from 'formik';
+
+
+export interface FormValues {
+    email: string,
+    phone: string,
+    address: string,
+}
 
 const FormSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email')
@@ -12,7 +19,15 @@ const FormSchema = Yup.object().shape({
 })
 .required('Required')
 
-const CheckoutForm:React.FC = ({ onSubmit}) => {
+interface IProps {
+    onSubmit() : void
+}
+
+interface IFormikProps<T> extends Omit<FormikProps<T>, 'handleSubmit'> {
+    handleSubmit(ev: NativeSyntheticEvent<NativeTouchEvent>) : void
+}
+
+const CheckoutForm:React.SFC<IProps> = ({ onSubmit} ) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Your Information:</Text>
@@ -25,7 +40,7 @@ const CheckoutForm:React.FC = ({ onSubmit}) => {
                 validationSchema={FormSchema}
                 onSubmit={onSubmit}
             >
-                {({ errors, handleChange, handleBlur, handleSubmit, values }) => (
+                {({ errors, handleChange, handleBlur, handleSubmit, values } : IFormikProps<FormValues>) => (
                     <View>
                         <View style={styles.formGroup}>
                             <Text>Email:</Text>

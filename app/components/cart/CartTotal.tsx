@@ -5,6 +5,7 @@ import { ICartItem } from './CartItem';
 
 interface IProps {
     items: ICartItem[],
+    
 }
 const CartTotal:React.FC<IProps> = ( {items} ) => {
     const total = items.reduce((acc, item) => acc + (item.amount * item.price), 0);

@@ -4,8 +4,9 @@ import ProductList from './product/ProductList';
 import Cart from './cart/CartContainer';
 import Checkout from './checkout/CheckoutContainer';
 import IconCart from './icons/IconCartWithBadge';
+import IconUser from './icons/IconUser';
 import { createAppContainer } from 'react-navigation';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 const AppNavigator = createStackNavigator(
     {
@@ -26,13 +27,16 @@ const AppNavigator = createStackNavigator(
             navigationOptions: {
                 title: 'Checkout'
             }
-        }
+        },
     },
     {
         initialRouteName: 'ProductList',
         defaultNavigationOptions: ({ navigation: { navigate } }) => {
             return {
-                headerRight: <IconCart onPress={() => navigate('Cart')} style={styles.cartButton}/>,
+                headerRight: <View style={styles.headerButtons}>
+                                <IconCart onPress={() => navigate('Cart')} style={styles.cartButton}/>
+                                <IconUser onPress={() => navigate('login')} style={styles.cartButton}/>
+                            </View>,
                 headerStyle: {
                     backgroundColor: '#9c4dcc',
                 },
@@ -51,6 +55,10 @@ const styles = StyleSheet.create({
         overflow: 'visible',
         paddingTop: 10,
     },
+    headerButtons: {
+        flex: 1,
+        flexDirection: 'row',
+    }
 })
 
 
