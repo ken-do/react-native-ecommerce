@@ -1,11 +1,11 @@
-import ICRUDController from '../interfaces/CRUDController';
+import IModel from '../interfaces/Model';
 import { readFile, writeFile, readFileSync } from 'fs';
 
 interface IDWise {
     id: string
 }
 
-export default class CRUDController<T extends IDWise> implements ICRUDController<T> {
+export default class Model<T extends IDWise> implements IModel<T> {
     
     public databaseURL: string;
     private records: T[];

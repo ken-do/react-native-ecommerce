@@ -7,10 +7,6 @@ const app = express();
 
 app.use(serveStatic(path.join(__dirname, 'server', 'static')));
 
-app.get('/api/products', (req, res) => {
-    const productController = new ProductController;
-    const data = productController.index();
-    res.send(data);
-});
+app.get('/api/products', ProductController.index);
 
 app.listen(5000);
