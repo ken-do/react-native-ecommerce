@@ -3,12 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import ButtonAddWithPress from '../icons/IconAddWithPress';
 import ButtonRemoveWithPress from '../icons/IconRemoveWithPress';
-import { IProduct } from '../product/data';
-
-
-export interface ICartItem extends IProduct {
-    amount: number
-}
+import ICartItem from '../../interfaces/CartItem';
 
 interface IProps {
     item: ICartItem

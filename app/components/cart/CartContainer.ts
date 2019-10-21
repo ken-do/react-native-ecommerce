@@ -3,7 +3,7 @@ import Cart from './Cart';
 import actions from '../../actions';
 import AsyncStore from '../../ultilities/AsyncStore';
 import { CART_ITEMS } from '../../constants/StoreKeys';
-import { ICartItem } from './CartItem';
+import ICartItem from '../../interfaces/CartItem';
 
 const addAllToCart = (dispatch: (arg0: any) => void) => (items : ICartItem[]) => dispatch(actions.addAllToCart(items));
 

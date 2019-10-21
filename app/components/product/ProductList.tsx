@@ -1,9 +1,19 @@
-import React from 'react';
-import products from './data';
+import React, { useEffect } from 'react';
 import ProductItem from './ProductItem';
 import { FlatList } from 'react-native';
+import IProduct from '../../interfaces/Product';
 
-const ProductList:React.FC = () => {
+interface IProps {
+    products: IProduct[],
+    fetchProducts: () => void
+}
+
+const ProductList:React.FC<IProps> = ({ products, fetchProducts }) => {
+    
+    useEffect(() => {
+        fetchProducts();
+    });
+
     return (
         <FlatList
             data={products}

@@ -2,13 +2,13 @@ import React from 'react';
 import { StyleSheet, View, TouchableHighlight } from 'react-native';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import IconCartWithPress from '../icons/IconAddWithPress';
-import { IProduct } from './data';
+import IProduct from '../../interfaces/Product';
 
-export interface IProductProps {
+export interface IProps {
     readonly product: IProduct
 } 
 
-const ProductItem:React.FC<IProductProps> = ({ product }) => {
+const ProductItem:React.FC<IProps> = ({ product }) => {
     return (
         <Card style={styles.container}>
             <Card.Content>

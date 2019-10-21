@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
-import ProductList from './product/ProductList';
+import ProductList from './product/ProductListContainer';
 import Cart from './cart/CartContainer';
 import Checkout from './checkout/CheckoutContainer';
 import IconCart from './icons/IconCartWithBadge';
