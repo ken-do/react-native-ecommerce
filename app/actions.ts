@@ -1,13 +1,15 @@
 import { createActions } from 'redux-actions';
 import axios from 'axios';
+import env from 'react-native-config'
+import Product from './interfaces/Product';
 
 const actions = createActions({
-  FETCH_PRODUCTS_SUCCESS: (products) => (products),
+  FETCH_PRODUCTS_SUCCESS: (products: Product[]) => (products),
   LOGIN: (userCreds = {}) => (userCreds),
-  ADD_ALL_TO_CART: (products = []) => (products),
+  ADD_ALL_TO_CART: (products: Product[] = []) => (products),
   ADD_TO_CART: (product = {}) => (product),
-  REMOVE_FROM_CART: (id) => (id),
-  UPDATE_CART: (id) => (id),
+  REMOVE_FROM_CART: (id: number) => (id),
+  UPDATE_CART: (id: number) => (id),
   CLEAR_CART: () => {
     return {}
   },
@@ -15,11 +17,11 @@ const actions = createActions({
 
 export const fetchProducts = () => {
   return (dispatch: any) => {
-    axios.get('http://localhost:5000/api/products')
+    axios.get(env.ROOT_API + '/products')
     .then(res => {
-      dispatch(actions.fetchProductsSuccess(res))
+      return dispatch(actions.fetchProductsSuccess(res.data))
     })
-    .catch(err => console.log('Error'))
+    .catch(err => console.log(err))
   }
 }
 

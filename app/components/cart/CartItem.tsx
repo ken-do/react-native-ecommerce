@@ -4,6 +4,7 @@ import { Card, Title, Paragraph } from 'react-native-paper';
 import ButtonAddWithPress from '../icons/IconAddWithPress';
 import ButtonRemoveWithPress from '../icons/IconRemoveWithPress';
 import ICartItem from '../../interfaces/CartItem';
+import env from 'react-native-config';
 
 interface IProps {
     item: ICartItem
@@ -14,7 +15,7 @@ const CartItem: React.FC<IProps> = ({ item }) => {
         <Card style={styles.container}>
             <Card.Content  style={styles.content}>
                 <View style={styles.cover}>
-                    <Card.Cover style={styles.img} source={item.img} resizeMode="contain" />
+                    <Card.Cover style={styles.img} source={{ uri: env.SERVER_URI + item.img }} resizeMode="contain" />
                 </View>
                 <View style={styles.details}>
                     <View>

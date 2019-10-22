@@ -11,7 +11,9 @@ interface IProps {
 const ProductList:React.FC<IProps> = ({ products, fetchProducts }) => {
     
     useEffect(() => {
-        fetchProducts();
+        if (!products.length) {
+            fetchProducts();
+        }
     });
 
     return (
