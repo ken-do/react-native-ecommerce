@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import actions from '../../actions';
 import Checkout from './Checkout';
+import { Dispatch } from 'redux';
 
-const mapDispatchToProps = (dispatch: (arg0: any) => void) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
         clearCart: () => dispatch(actions.clearCart())
     }

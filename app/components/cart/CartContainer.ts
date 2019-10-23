@@ -4,8 +4,9 @@ import actions from '../../actions';
 import AsyncStore from '../../ultilities/AsyncStore';
 import { CART_ITEMS } from '../../constants/StoreKeys';
 import ICartItem from '../../interfaces/CartItem';
+import { Dispatch } from 'redux';
 
-const addAllToCart = (dispatch: (arg0: any) => void) => (items : ICartItem[]) => dispatch(actions.addAllToCart(items));
+const addAllToCart = (dispatch: Dispatch) => (items : ICartItem[]) => dispatch(actions.addAllToCart(items));
 
 const checkStore = ({ items } : {items : ICartItem[] }) => async () => {
     if (!(items && items.length)) {
@@ -22,7 +23,7 @@ const mapStateToProps = (state: { cart: ICartItem[]; }) => {
     }
 }
 
-const mapDispatchToProps = (dispatch: (arg0: any) => void, ownProps: any) => {
+const mapDispatchToProps = (dispatch: Dispatch, ownProps: object) => {
     return {
         addAllToCart: addAllToCart(dispatch),
         checkAsyncStore: checkStore.bind(this, ownProps)

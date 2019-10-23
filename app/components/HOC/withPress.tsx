@@ -6,7 +6,7 @@ interface IProps {
     [propName: string]: any;
 }
 
-const withPress = (WrappedComponent : any) => ({ onPress, buttonStyle={}, ...passThroughProps } : IProps) => {
+const withPress = (WrappedComponent : React.FC | React.ClassicComponentClass) => ({ onPress, buttonStyle={}, ...passThroughProps } : IProps) => {
     return (
         <TouchableOpacity onPress={onPress} style={[styles.button, buttonStyle]} >
             <WrappedComponent {...passThroughProps}/>

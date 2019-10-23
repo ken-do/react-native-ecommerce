@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import IState from '../../interfaces/State';
 import { fetchProducts } from '../../actions';
 import ProductList from './ProductList';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
 
 const mapStateToProps = (state: IState) => {
     return {
@@ -9,7 +11,7 @@ const mapStateToProps = (state: IState) => {
     }
 }
 
-const mapsDispatchToProps = (dispatch: any) => {
+const mapsDispatchToProps = (dispatch: ThunkDispatch<object, void, AnyAction>) => {
     return {
         fetchProducts: () => dispatch(fetchProducts())
     }

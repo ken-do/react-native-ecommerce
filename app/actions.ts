@@ -2,6 +2,8 @@ import { createActions } from 'redux-actions';
 import axios from 'axios';
 import env from 'react-native-config'
 import Product from './interfaces/Product';
+import { ThunkAction } from 'redux-thunk';
+import { Dispatch } from 'redux';
 
 const actions = createActions({
   FETCH_PRODUCTS_SUCCESS: (products: Product[]) => (products),
@@ -15,11 +17,11 @@ const actions = createActions({
   },
 });
 
-export const fetchProducts = () => {
-  return (dispatch: any) => {
+export const fetchProducts: () => (ThunkAction<void, object, null, null>) = () => {
+  return (dispatch: Dispatch) => {
     axios.get(env.ROOT_API + '/products')
     .then(res => {
-      return dispatch(actions.fetchProductsSuccess(res.data))
+      dispatch(actions.fetchProductsSuccess(res.data))
     })
     .catch(err => console.log(err))
   }

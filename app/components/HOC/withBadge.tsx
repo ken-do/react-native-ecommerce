@@ -7,7 +7,7 @@ interface IProps {
     [propName: string]: any;
 }
 
-const withBadge = (WrappedComponent : any) => ( { length , ...passThroughProps}: IProps ) => {
+const withBadge = (WrappedComponent: React.FC | React.ClassicComponentClass) => ( { length , ...passThroughProps}: IProps ) => {
     return (
         <View>
             <WrappedComponent {...passThroughProps} />
