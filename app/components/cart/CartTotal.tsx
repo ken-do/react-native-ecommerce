@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, View, Text, StyleSheet, ScrollView } from 'react-native';
 import CartTotalItem from './CartTotalItem';
-import { ICartItem } from './CartItem';
+import ICartItem from '../../interfaces/CartItem';
 
 interface IProps {
     items: ICartItem[],
