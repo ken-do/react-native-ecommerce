@@ -3,7 +3,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Badge } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 
-const IconCart: React.FC = () => {
+interface IProps {
+    style?: object,
+    onPress: () => void,
+}
+
+const IconCart: React.FC<IProps> = () => {
     return (
         <Icon style={styles.icon} name="shopping-cart" />
     )

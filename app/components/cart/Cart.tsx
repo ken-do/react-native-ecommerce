@@ -4,7 +4,7 @@ import CartItem from './CartItem';
 
 import CartTotal from './CartTotal';
 import ButtonCheckout from '../icons/ButtonCheckout';
-import { ICartItem } from './CartItem';
+import ICartItem from '../../interfaces/CartItem';
 
 interface IProps {
     items: ICartItem[];

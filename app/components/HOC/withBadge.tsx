@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-paper';
 
 interface IProps {
-    length: number;
+    length?: number;
     [propName: string]: any;
 }
 

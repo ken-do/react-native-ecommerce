@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView, Alert} from 'react-native';
 import CartTotal from '../cart/CartTotal';
 import CheckoutForm from './CheckoutForm';
-import { ICartItem } from '../cart/CartItem';
+import ICartItem from '../../interfaces/CartItem';
 
 interface INavigation {
     state:  { params : { items : ICartItem[] }};

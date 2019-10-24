@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import IconCart from './IconCart';
 import withPress from '../HOC/withPress';
 import withBadge from '../HOC/withBadge';
-import { IProduct } from '../product/data';
+import ICartItem from '../../interfaces/CartItem';
 
-const mapStateToProps = (state: { cart: IProduct[] } ) => {
+const mapStateToProps = (state: { cart: ICartItem[] } ) => {
     return {
-        length: state.cart.reduce((length : number, item: IProduct) : number => length + item.amount, 0)
+        length: state.cart.reduce((length : number, item: ICartItem) : number => length + item.amount, 0)
     }
 }
 
