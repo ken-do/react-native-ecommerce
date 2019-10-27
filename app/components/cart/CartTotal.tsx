@@ -14,7 +14,7 @@ const CartTotal:React.FC<IProps> = ( {items} ) => {
             <FlatList
                 data={items}
                 renderItem={item => <CartTotalItem {...item} />}
-                keyExtractor={item => item.id.toString()}
+                keyExtractor={item => item._id}
             />
             <View style={styles.sectionTotal}>
                 <Text style={styles.title}>Total:</Text>

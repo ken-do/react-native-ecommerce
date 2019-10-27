@@ -30,7 +30,7 @@ const Cart: React.FC<IProps> = (props) => {
                 <FlatList
                     data={items}
                     renderItem={({ item }) => <CartItem item={item} />}
-                    keyExtractor={item => item.id.toString()}
+                    keyExtractor={item => item._id}
                 />
                 <View style={styles.sectionTotal}>
                     <CartTotal items={items} />
