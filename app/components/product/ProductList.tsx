@@ -20,7 +20,7 @@ const ProductList:React.FC<IProps> = ({ products, fetchProducts }) => {
         <FlatList
             data={products}
             renderItem={({ item }) => <ProductItem product={item} />}
-            keyExtractor={item => item.id.toString()}
+            keyExtractor={item => item.id}
         />
     )
 }
