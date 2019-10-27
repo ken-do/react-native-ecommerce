@@ -19,12 +19,15 @@ const reducer = handleActions(
         [fetchProductsSuccess] : (state: IState, {payload : products}) => {
             return {...state, products};
         },
+
         [login]: (state: IState) => {
             return { ...state, authenticated: true }
         },
+
         [addAllToCart] : (state: IState, { payload: products }) => {
             return { ...state, cart: products}
         },
+
         [addToCart]: (state: IState, { payload: product} ) => {
             const cart = state.cart.slice();
             const item = cart.find(p => p._id === product._id);
@@ -38,6 +41,7 @@ const reducer = handleActions(
             AsyncStore.set(CART_ITEMS, cart);
             return { ...state, cart}
         },
+
         [removeFromCart]: (state: IState, { payload: id }) => {
             let cart = state.cart.slice();
             const item = cart.find(p => p._id === id);
@@ -53,11 +57,13 @@ const reducer = handleActions(
             AsyncStore.set(CART_ITEMS, cart);
             return { ...state, cart}
         },
+
         [clearCart]: (state: IState) => {
             AsyncStore.set(CART_ITEMS, []);
             return { ...state, cart : defaultState.cart.slice()}
         },
     },
+    
     defaultState
 );
 
