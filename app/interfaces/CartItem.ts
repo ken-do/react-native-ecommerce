@@ -1,5 +1,3 @@
-import Product from './Product';
-
-export default interface CartItem extends Product {
-    amount: number
+export default interface CartItem {
+    [id: string]: number
 }
