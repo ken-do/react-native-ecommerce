@@ -18,7 +18,8 @@
             true,
             "single",
             "jsx-double"
-        ]
+        ],
+        "variable-name": false
     },
     "rulesDirectory": [],
     "linterOptions": {
