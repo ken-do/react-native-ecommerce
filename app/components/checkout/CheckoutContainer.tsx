@@ -5,7 +5,8 @@ import { Dispatch } from 'redux';
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        clearCart: () => dispatch(actions.clearCart())
+        clearCart: () => dispatch(actions.clearCart()),
+        submitForm: () => dispatch(actions.checkout())
     }
 }
 

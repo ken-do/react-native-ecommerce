@@ -7,14 +7,17 @@ interface IProps {
     items: ICartItem[],
     
 }
-const CartTotal:React.FC<IProps> = ( {items} ) => {
-    const total = items.reduce((acc, item) => acc + (item.amount * item.price), 0);
+const CartTotal:React.FC<IProps> = ({ items }) => {
+    const total = items && items.reduce((acc, item) => { 
+        return item.details ? acc + (item.amount * item.details.price): 0;
+    }, 0);
+        
     return (
         <ScrollView style={styles.container}>
             <FlatList
                 data={items}
                 renderItem={item => <CartTotalItem {...item} />}
-                keyExtractor={item => item._id}
+                keyExtractor={item => item.id}
             />
             <View style={styles.sectionTotal}>
                 <Text style={styles.title}>Total:</Text>

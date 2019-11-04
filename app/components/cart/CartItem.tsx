@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import ButtonAddWithPress from '../icons/IconAddWithPress';
 import ButtonRemoveWithPress from '../icons/IconRemoveWithPress';
@@ -10,21 +10,21 @@ interface IProps {
     item: ICartItem
 }
 
-const CartItem: React.FC<IProps> = ({ item }) => {
+const CartItem: React.FC<IProps> = ({ item }) => {    
     return (
         <Card style={styles.container}>
             <Card.Content  style={styles.content}>
                 <View style={styles.cover}>
-                    <Card.Cover style={styles.img} source={{ uri: env.SERVER_URI + item.img }} resizeMode="contain" />
+                    <Card.Cover style={styles.img} source={{ uri: env.SERVER_URI + item.details.img }} resizeMode="contain" />
                 </View>
                 <View style={styles.details}>
                     <View>
-                        <Title>{item.title}</Title>
-                        <Paragraph style={styles.price}>${item.price} x {item.amount}</Paragraph>
+                        <Title>{item.details.title}</Title>
+                        <Paragraph style={styles.price}>${item.details.price} x {item.amount}</Paragraph>
                     </View>
-                    <Paragraph style={styles.desc} >{item.desc}</Paragraph>
-                    <ButtonRemoveWithPress product={item} buttonStyle={styles.buttonRemove} />
-                    <ButtonAddWithPress product={item} buttonStyle={styles.buttonAdd} />
+                    <Paragraph style={styles.desc} >{item.details.desc}</Paragraph>
+                    <ButtonRemoveWithPress id={item.details._id} buttonStyle={styles.buttonRemove} />
+                    <ButtonAddWithPress id={item.details._id} buttonStyle={styles.buttonAdd} />
                 </View>
             </Card.Content>
         </Card>

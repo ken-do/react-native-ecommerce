@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, View, Text, StyleSheet, ScrollView } from 'react-native';
-import CartItem from './CartItem';
 
+import CartItem from './CartItem';
 import CartTotal from './CartTotal';
 import ButtonCheckout from '../icons/ButtonCheckout';
+
 import ICartItem from '../../interfaces/CartItem';
 
 interface IProps {
@@ -13,24 +14,30 @@ interface IProps {
 }
 
 const Cart: React.FC<IProps> = (props) => {
-
-    const { items, navigation: { navigate } } = props;
+    const { items, checkAsyncStore, navigation: { navigate } } = props;
 
     useEffect(() => {
-        props.checkAsyncStore();
+        if (!items.length) {
+            checkAsyncStore();
+        }
     });
 
     const checkout = () => {
         navigate('Checkout', { items });
     }
+    
+    const [fetchedDetails, setFetchedDetails] = useState(false);
 
+    const itemsDetails = items.map(item => item.fetchDetails());
+    Promise.all(itemsDetails).then(() => setFetchedDetails(true));
+    
     return (
-        (items && items.length) ?
+        (items && items.length && fetchedDetails) ?
             <ScrollView>
                 <FlatList
                     data={items}
                     renderItem={({ item }) => <CartItem item={item} />}
-                    keyExtractor={item => item._id}
+                    keyExtractor={item => item.id}
                 />
                 <View style={styles.sectionTotal}>
                     <CartTotal items={items} />

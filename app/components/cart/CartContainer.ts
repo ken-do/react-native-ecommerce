@@ -1,10 +1,12 @@
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
+
 import Cart from './Cart';
 import actions from '../../actions';
 import AsyncStore from '../../ultilities/AsyncStore';
 import { CART_ITEMS } from '../../constants/StoreKeys';
+
 import ICartItem from '../../interfaces/CartItem';
-import { Dispatch } from 'redux';
 
 const addAllToCart = (dispatch: Dispatch) => (items : ICartItem[]) => dispatch(actions.addAllToCart(items));
 
@@ -29,6 +31,5 @@ const mapDispatchToProps = (dispatch: Dispatch, ownProps: object) => {
         checkAsyncStore: checkStore.bind(this, ownProps)
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

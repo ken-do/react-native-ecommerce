@@ -6,7 +6,10 @@ import ICartItem from '../../interfaces/CartItem';
 
 const mapStateToProps = (state: { cart: ICartItem[] } ) => {
     return {
-        length: state.cart.reduce((length : number, item: ICartItem) : number => length + item.amount, 0)
+        length: state.cart.reduce((length : number, item: ICartItem) : number => {
+            const amount = item.amount;
+            return length + amount
+        }, 0)
     }
 }
 

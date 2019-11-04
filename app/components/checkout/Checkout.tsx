@@ -2,20 +2,19 @@ import React from 'react';
 import { ScrollView, Alert} from 'react-native';
 import CartTotal from '../cart/CartTotal';
 import CheckoutForm from './CheckoutForm';
-import ICartItem from '../../interfaces/CartItem';
+import ICartItemDetails from '../../interfaces/CartItemDetails';
 
 interface INavigation {
-    state:  { params : { items : ICartItem[] }};
+    state:  { params : { items : ICartItemDetails[] }};
     navigate(screen: string) : void;
 }
+
 interface IProps {
     navigation: INavigation;
     clearCart() : void;
 } 
 
-
 const Checkout: React.FC<IProps> = ({ clearCart, navigation: { navigate, state : { params: { items } }}}) => {
-    
     const submitForm = () => new Promise(resolve => {
         setTimeout(resolve, 400);
     })

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import { Card, Title, Paragraph } from 'react-native-paper';
-import IconCartWithPress from '../icons/IconAddWithPress';
+import IconAddWithPress from '../icons/IconAddWithPress';
 import IProduct from '../../interfaces/Product';
 import env from 'react-native-config';
 
@@ -19,7 +19,7 @@ const ProductItem:React.FC<IProps> = ({ product }) => {
                 </View>
                 <View style={styles.cover}>
                     <Card.Cover style={styles.img} source={{ uri: env.SERVER_URI + product.img }} />
-                    <IconCartWithPress product={product} buttonStyle={styles.buttonAdd} />
+                    <IconAddWithPress id={product._id} buttonStyle={styles.buttonAdd} />
                 </View>
                 <Paragraph style={styles.desc} >{product.desc}</Paragraph>
             </Card.Content>

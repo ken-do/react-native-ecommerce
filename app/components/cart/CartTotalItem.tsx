@@ -5,20 +5,19 @@ import ICartItem from '../../interfaces/CartItem';
 interface IProps {
     item : ICartItem
 }
-const CartTotalItem:React.FC<IProps> = ({item : { title, id, price, amount }}) => {
+const CartTotalItem:React.FC<IProps> = ({item}) => {
     return (
         <View style={styles.item}>
             <View style={styles.itemInfo}>
-                <Text style={styles.title}>{title}</Text>
-                <Text>${price} x {amount}</Text>
+                <Text style={styles.title}>{item.details.title}</Text>
+                <Text>${item.details.price} x {item.amount}</Text>
             </View>
             <View style={styles.itemCost}>
-                <Text>${price * amount}</Text>
+                <Text>${item.details.price * item.amount}</Text>
             </View>
         </View>
     )
 }
-
 
 const styles = StyleSheet.create({
     item: {

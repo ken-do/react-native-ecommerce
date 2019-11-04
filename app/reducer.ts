@@ -3,6 +3,7 @@ import actions from './actions';
 import AsyncStore from './ultilities/AsyncStore';
 import { CART_ITEMS } from './constants/StoreKeys';
 import IState from './interfaces/State';
+import CartItem from './ultilities/CartItem';
 
 const { login, addToCart, addAllToCart, removeFromCart, clearCart, fetchProductsSuccess } = actions;
 
@@ -24,19 +25,18 @@ const reducer = handleActions(
             return { ...state, authenticated: true }
         },
 
-        [addAllToCart] : (state: IState, { payload: products }) => {
-            return { ...state, cart: products}
+        [addAllToCart] : (state: IState, { payload: items }) => {
+            return { ...state, cart: items}
         },
 
-        [addToCart]: (state: IState, { payload: product} ) => {
+        [addToCart]: (state: IState, { payload: id} ) => {
             const cart = state.cart.slice();
-            const item = cart.find(p => p._id === product._id);
+            const item = cart && cart.find(it => it.id === id);
             if (item) {
-                const index = cart.indexOf(item);
-                const amount = cart[index].amount;
-                cart[index].amount = amount + 1;
+                const amount = item.amount;
+                item.amount = amount + 1;
             } else {
-                cart.push({...product, amount : 1});
+                cart.push(new CartItem(id, 1));
             }
             AsyncStore.set(CART_ITEMS, cart);
             return { ...state, cart}
@@ -44,14 +44,13 @@ const reducer = handleActions(
 
         [removeFromCart]: (state: IState, { payload: id }) => {
             let cart = state.cart.slice();
-            const item = cart.find(p => p._id === id);
+            const item = cart.find(it => it.id === id);
             if (item) {
-                const index = cart.indexOf(item);
                 if (item.amount > 1) {
-                    const amount = cart[index].amount;
-                    cart[index].amount = amount - 1;
+                    const amount = item.amount;
+                    item.amount = amount - 1;
                 } else if (item.amount === 1) {
-                    cart = cart.filter(p => p._id !== item._id)
+                    cart = cart.filter(it => it.id !== id)
                 }
             }
             AsyncStore.set(CART_ITEMS, cart);
