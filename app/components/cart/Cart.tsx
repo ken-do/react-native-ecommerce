@@ -27,10 +27,10 @@ const Cart: React.FC<IProps> = (props) => {
     }
     
     const [fetchedDetails, setFetchedDetails] = useState(false);
-
+    
     const itemsDetails = items.map(item => item.fetchDetails());
     Promise.all(itemsDetails).then(() => setFetchedDetails(true));
-    
+
     return (
         (items && items.length && fetchedDetails) ?
             <ScrollView>

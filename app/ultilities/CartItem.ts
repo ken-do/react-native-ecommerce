@@ -2,12 +2,12 @@ import axios from 'axios';
 import env from 'react-native-config'
 
 import ICartItem from '../interfaces/CartItem';
-import ICartItemDetails from '../interfaces/CartItemDetails';
+import IProduct from '../interfaces/Product';
 
 export default class CartItem implements ICartItem {
     private _id: string;
     private _amount: number;
-    private _details: ICartItemDetails;
+    private _details: IProduct;
 
     constructor(k: string, v: number) {
         this._id = k;
@@ -26,12 +26,12 @@ export default class CartItem implements ICartItem {
         this._amount = amount;
     }
 
-    public toTuple() {
-        return {[this._id] : this._amount} ;
-    }
-
     get details() {
         return this._details;
+    }
+
+    set details(product: IProduct) {
+        this._details = product;
     }
 
     public async fetchDetails() {

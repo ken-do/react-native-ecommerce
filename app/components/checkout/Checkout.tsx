@@ -2,10 +2,10 @@ import React from 'react';
 import { ScrollView, Alert} from 'react-native';
 import CartTotal from '../cart/CartTotal';
 import CheckoutForm from './CheckoutForm';
-import ICartItemDetails from '../../interfaces/CartItemDetails';
+import IProduct from '../../interfaces/Product';
 
 interface INavigation {
-    state:  { params : { items : ICartItemDetails[] }};
+    state:  { params : { items : IProduct[] }};
     navigate(screen: string) : void;
 }
 

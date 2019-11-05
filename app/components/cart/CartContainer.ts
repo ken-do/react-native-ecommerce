@@ -8,14 +8,10 @@ import { CART_ITEMS } from '../../constants/StoreKeys';
 
 import ICartItem from '../../interfaces/CartItem';
 
-const addAllToCart = (dispatch: Dispatch) => (items : ICartItem[]) => dispatch(actions.addAllToCart(items));
-
-const checkStore = ({ items } : {items : ICartItem[] }) => async () => {
-    if (!(items && items.length)) {
-        const cartItems = await AsyncStore.get(CART_ITEMS);
-        if (cartItems && cartItems.length) {
-            this.addAllToCart(cartItems);
-        }
+const checkStore = async (dispatch: Dispatch) => {
+    const cartItems = await AsyncStore.get(CART_ITEMS);
+    if (cartItems && cartItems.length) {
+        dispatch(actions.addAllToCart(cartItems));
     }
 }
 
@@ -25,10 +21,9 @@ const mapStateToProps = (state: { cart: ICartItem[]; }) => {
     }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch, ownProps: object) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        addAllToCart: addAllToCart(dispatch),
-        checkAsyncStore: checkStore.bind(this, ownProps)
+        checkAsyncStore: () => checkStore(dispatch)
     }
 }
 

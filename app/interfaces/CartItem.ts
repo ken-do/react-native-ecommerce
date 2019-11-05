@@ -1,8 +1,8 @@
-import ICartItemDetails from './CartItemDetails';
+import IProduct from './Product';
 
 export default interface CartItem {
     id: string,
     amount: number,
-    details: ICartItemDetails,
-    fetchDetails(): Promise<ICartItemDetails>
+    details: IProduct,
+    fetchDetails(): Promise<IProduct>,
 }

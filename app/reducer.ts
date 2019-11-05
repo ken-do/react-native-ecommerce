@@ -26,7 +26,12 @@ const reducer = handleActions(
         },
 
         [addAllToCart] : (state: IState, { payload: items }) => {
-            return { ...state, cart: items}
+            const cartItems = items.map((item) => {
+                const cartItem = new CartItem(item._id, item._amount);
+                cartItem.details = item._details;
+                return cartItem;
+            });
+            return { ...state, cart: cartItems}
         },
 
         [addToCart]: (state: IState, { payload: id} ) => {
