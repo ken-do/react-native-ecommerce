@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, Text, StyleSheet, NativeSyntheticEvent, NativeTouchEvent } from 'react-native';
 import * as Yup from 'yup';
 import { Formik, FormikProps } from 'formik';
+import IUser from '../../interfaces/User';
 
 
 export interface FormValues {
@@ -20,14 +21,14 @@ const FormSchema = Yup.object().shape({
 .required('Required')
 
 interface IProps {
-    onSubmit() : void
+    onSubmit(userInfo: IUser) : void
 }
 
 interface IFormikProps<T> extends Omit<FormikProps<T>, 'handleSubmit'> {
     handleSubmit(ev: NativeSyntheticEvent<NativeTouchEvent>) : void
 }
 
-const CheckoutForm:React.SFC<IProps> = ({ onSubmit} ) => {
+const CheckoutForm:React.SFC<IProps> = ({ onSubmit } ) => {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Your Information:</Text>

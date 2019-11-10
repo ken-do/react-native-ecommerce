@@ -28,13 +28,4 @@ export const fetchProducts: () => (ThunkAction<void, IState, null, null>) = () =
   }
 }
 
-export const checkout: (data) => (ThunkAction<void, IState, null, null>) = (data) => {
-  return (dispatch: Dispatch) => {
-    axios.post(env.ROOT_API + '/checkout', data)
-    .then(res => {
-      dispatch(actions.checkoutSuccess(res.data))
-    })
-    .catch(err => console.log(err))
-  }
-}
 export default actions
