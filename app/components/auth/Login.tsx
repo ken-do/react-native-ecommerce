@@ -2,10 +2,10 @@ import React from 'react';
 import { Text, View } from 'react-native';
 
 import LoginForm from './LoginForm';
-import { IFormValues } from './LoginForm';
+import ILoginForm from '../../interfaces/LoginForm';
 
 interface IProps {
-    login(values: IFormValues): void
+    login(values: ILoginForm): void
 }
 
 const Login: React.FC<IProps> = ({ login }) => {

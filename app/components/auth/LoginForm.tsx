@@ -2,13 +2,10 @@ import React from 'react';
 import { Button, View, Text, TextInput, NativeSyntheticEvent, NativeTouchEvent } from 'react-native';
 import { Formik, FormikProps, Form } from 'formik';
 import * as Yup from 'yup';
+import ILoginForm from '../../interfaces/LoginForm';
 
-export interface IFormValues {
-    email: string,
-    password: string
-}
 interface IProps {
-    onSubmit(values: IFormValues): void
+    onSubmit(values: ILoginForm): void
 }
 
 interface IFormikProps<T> extends Omit<FormikProps<T>, 'handleSubmit'> {
@@ -34,7 +31,7 @@ const LoginForm: React.FC<IProps> = ({ onSubmit }) => {
                 validationSchema={FormSchema}
                 onSubmit={onSubmit}
             >
-                {({ errors, handleChange, handleBlur, handleSubmit, values }: IFormikProps<IFormValues>) => (
+                {({ errors, handleChange, handleBlur, handleSubmit, values }: IFormikProps<ILoginForm>) => (
                     <View>
                         <View>
                             <Text>Email:</Text>

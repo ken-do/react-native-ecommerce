@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
 
 import Login from './Login';
-import actions from '../../actions';
-import { IFormValues } from './LoginForm';
+import { login } from '../../actions';
+import ILoginForm from '../../interfaces/LoginForm';
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: ThunkDispatch<object, void, AnyAction>) => {
     return {
-        login: (values: IFormValues) => dispatch(actions.login(values))
+        login: (data: ILoginForm) => dispatch(login(data))
     }
 }
 

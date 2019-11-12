@@ -7,6 +7,7 @@ import IconCart from './icons/IconCartWithBadge';
 import IconUser from './icons/IconUser';
 import { createAppContainer } from 'react-navigation';
 import { StyleSheet, View } from 'react-native';
+import Login from './auth/LoginContainer';
 
 const AppNavigator = createStackNavigator(
     {
@@ -28,6 +29,12 @@ const AppNavigator = createStackNavigator(
                 title: 'Checkout'
             }
         },
+        Login: {
+            screen: Login,
+            navigationOptions: {
+                title: 'Login'
+            }
+        }
     },
     {
         initialRouteName: 'ProductList',
