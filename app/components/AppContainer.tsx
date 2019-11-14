@@ -4,7 +4,7 @@ import ProductList from './product/ProductListContainer';
 import Cart from './cart/CartContainer';
 import Checkout from './checkout/CheckoutContainer';
 import IconCart from './icons/IconCartWithBadge';
-import IconUser from './icons/IconUser';
+import IconUser from './icons/IconUserWithPress';
 import { createAppContainer } from 'react-navigation';
 import { StyleSheet, View } from 'react-native';
 import Login from './auth/LoginContainer';
@@ -42,7 +42,7 @@ const AppNavigator = createStackNavigator(
             return {
                 headerRight: <View style={styles.headerButtons}>
                                 <IconCart onPress={() => navigate('Cart')} style={styles.cartButton}/>
-                                <IconUser onPress={() => navigate('login')} style={styles.cartButton}/>
+                                <IconUser onPress={() => navigate('Login')} style={styles.cartButton}/>
                             </View>,
                 headerStyle: {
                     backgroundColor: '#9c4dcc',
