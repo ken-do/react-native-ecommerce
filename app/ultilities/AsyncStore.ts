@@ -12,7 +12,7 @@ export default class AsyncStore {
         }
     }
 
-    static get = async (key) => {
+    static get = async (key: string) => {
         try {
             const items = await AsyncStorage.getItem(key);
             return JSON.parse(items)
