@@ -9,14 +9,14 @@ import ILoginForm from './interfaces/LoginForm';
 
 const actions = createActions({
   FETCH_PRODUCTS_SUCCESS: (products: Product[]) => (products),
-  LOGIN_SUCCESS: (userCreds = {}) => (userCreds),
+  LOGIN_SUCCESS: (user = {}) => (user),
+  LOGIN_FAILURE: () => { return },
+  LOGOUT: () => { return },
   ADD_ALL_TO_CART: (products: Product[] = []) => (products),
   ADD_TO_CART: (id: string) => (id),
   REMOVE_FROM_CART: (id: number) => (id),
   UPDATE_CART: (id: number) => (id),
-  CLEAR_CART: () => {
-    return {}
-  },
+  CLEAR_CART: () => { return },
 });
 
 export const fetchProducts: () => (ThunkAction<void, IState, null, null>) = () => {
@@ -35,7 +35,9 @@ export const login: (data: ILoginForm) => (ThunkAction<void, IState, null, null>
     .then(res => {
       dispatch(actions.loginSuccess(res.data))
     })
-    .catch(err => console.log(err))
+    .catch(res => {
+      dispatch(actions.loginFailure(res.data))
+    })
   }
 }
 
