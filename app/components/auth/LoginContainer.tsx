@@ -5,6 +5,13 @@ import { AnyAction } from 'redux';
 import Login from './Login';
 import { login } from '../../actions';
 import ILoginForm from '../../interfaces/LoginForm';
+import IState from '../../interfaces/State';
+
+const mapStateToProps = (state: IState) => {
+    return {
+        loggedin: state.loggedin
+    }
+}
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<object, void, AnyAction>) => {
     return {
@@ -12,4 +19,4 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<object, void, AnyAction>) =>
     }
 }
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

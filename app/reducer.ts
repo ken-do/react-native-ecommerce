@@ -5,10 +5,11 @@ import { CART_ITEMS } from './constants/StoreKeys';
 import IState from './interfaces/State';
 import CartItem from './ultilities/CartItem';
 
-const { loginSuccess, addToCart, addAllToCart, removeFromCart, clearCart, fetchProductsSuccess } = actions;
+const { loginSuccess, loginFailure, logout, addToCart, addAllToCart, removeFromCart, clearCart, fetchProductsSuccess } = actions;
 
 const defaultState: IState = {
-    authenticated: false,
+    loggedin: false,
+    user: null,
     cart: [],
     checkedout: false,
     products: [],
@@ -21,8 +22,19 @@ const reducer = handleActions(
             return {...state, products};
         },
 
-        [loginSuccess]: (state: IState) => {
-            return { ...state, authenticated: true }
+        [loginSuccess]: (state: IState, { payload: user }) => {
+            console.log('user ', user);
+            return { ...state, loggedin: true, user }
+        },
+
+        [loginFailure]: (state: IState) => {
+            console.log('failed');
+            return { ...state, loggedin: false, user: null }
+        },
+
+        [logout]: (state: IState) => {
+            console.log('louggin out')
+            return { ...state, loggedin: false, user: null }
         },
 
         [addAllToCart] : (state: IState, { payload: items }) => {

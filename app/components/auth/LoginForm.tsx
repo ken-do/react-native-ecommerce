@@ -24,8 +24,8 @@ const LoginForm: React.FC<IProps> = ({ onSubmit }) => {
         <View style={styles.container}>
             <Formik
                 initialValues={{
-                    email: '',
-                    password: '',
+                    email: 'abcd@afds.com',
+                    password: '123123',
                 }}
                 validationSchema={FormSchema}
                 onSubmit={onSubmit}

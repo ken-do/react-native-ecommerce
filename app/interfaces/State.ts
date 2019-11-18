@@ -1,8 +1,10 @@
 import CartItem from './CartItem';
 import Product from './Product';
+import IAuthenticatedUser from './AuthenticatedUser';
 
 export default interface State {
-    authenticated: boolean,
+    loggedin: boolean,
+    user: IAuthenticatedUser,
     cart: CartItem[],
     checkedout: boolean,
     products: Product[],
