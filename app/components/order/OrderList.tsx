@@ -1,9 +1,12 @@
 import React from 'react';
 import { DataTable } from 'react-native-paper';
+
+import IOrder from '../../interfaces/Order';
+
 import OrderListItem from './OrderListItem';
 
-const OrderList = ({ items }) => {
-    const orderItems = items.map(item => <OrderListItem order={item} />);
+const OrderList = ({ orders }) => {
+    const orderItems = orders.map((order: IOrder) => <OrderListItem order={order} />);
 
     return (
         <DataTable>
@@ -13,7 +16,7 @@ const OrderList = ({ items }) => {
                 <DataTable.Title>Buyer's name</DataTable.Title>
                 <DataTable.Title>Total</DataTable.Title>
                 <DataTable.Title>Status</DataTable.Title>
-                <DataTable.Title>Actions</DataTable.Title>
+                <DataTable.Title>Details</DataTable.Title>
             </DataTable.Header>
             {orderItems}
             <DataTable.Pagination
