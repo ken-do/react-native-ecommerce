@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, View, Text, StyleSheet, ScrollView } from 'react-native';
 
+import ICartItem from '../../interfaces/CartItem';
+
 import CartItem from './CartItem';
 import CartTotal from './CartTotal';
 import ButtonCheckout from '../icons/ButtonCheckout';
-
-import ICartItem from '../../interfaces/CartItem';
 
 interface IProps {
     items: ICartItem[];

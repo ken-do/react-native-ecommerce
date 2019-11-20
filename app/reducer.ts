@@ -1,11 +1,13 @@
 import { handleActions } from 'redux-actions';
+
+import IState from './interfaces/State';
+
+import CartItem from './ultilities/CartItem';
 import actions from './actions';
 import AsyncStore from './ultilities/AsyncStore';
 import { CART_ITEMS } from './constants/StoreKeys';
-import IState from './interfaces/State';
-import CartItem from './ultilities/CartItem';
 
-const { loginSuccess, loginFailure, logout, addToCart, addAllToCart, removeFromCart, clearCart, fetchProductsSuccess } = actions;
+const { loginSuccess, loginFailure, logout, addToCart, addAllToCart, removeFromCart, clearCart, fetchProductsSuccess, fetchOrdersSuccess } = actions;
 
 const defaultState: IState = {
     loggedin: false,
@@ -13,40 +15,42 @@ const defaultState: IState = {
     cart: [],
     checkedout: false,
     products: [],
+    orders: []
 };
 
 
 const reducer = handleActions(
     {
-        [fetchProductsSuccess] : (state: IState, {payload : products}) => {
-            return {...state, products};
+        [fetchProductsSuccess]: (state: IState, { payload: products }) => {
+            return { ...state, products };
+        },
+
+        [fetchOrdersSuccess]: (state: IState, { payload: orders }) => {
+            return { ...state, orders };
         },
 
         [loginSuccess]: (state: IState, { payload: user }) => {
-            console.log('user ', user);
             return { ...state, loggedin: true, user }
         },
 
         [loginFailure]: (state: IState) => {
-            console.log('failed');
             return { ...state, loggedin: false, user: null }
         },
 
         [logout]: (state: IState) => {
-            console.log('louggin out')
             return { ...state, loggedin: false, user: null }
         },
 
-        [addAllToCart] : (state: IState, { payload: items }) => {
+        [addAllToCart]: (state: IState, { payload: items }) => {
             const cartItems = items.map((item) => {
                 const cartItem = new CartItem(item._id, item._amount);
                 cartItem.details = item._details;
                 return cartItem;
             });
-            return { ...state, cart: cartItems}
+            return { ...state, cart: cartItems }
         },
 
-        [addToCart]: (state: IState, { payload: id} ) => {
+        [addToCart]: (state: IState, { payload: id }) => {
             const cart = state.cart.slice();
             const item = cart && cart.find(it => it.id === id);
             if (item) {
@@ -56,7 +60,7 @@ const reducer = handleActions(
                 cart.push(new CartItem(id, 1));
             }
             AsyncStore.set(CART_ITEMS, cart);
-            return { ...state, cart}
+            return { ...state, cart }
         },
 
         [removeFromCart]: (state: IState, { payload: id }) => {
@@ -71,15 +75,15 @@ const reducer = handleActions(
                 }
             }
             AsyncStore.set(CART_ITEMS, cart);
-            return { ...state, cart}
+            return { ...state, cart }
         },
 
         [clearCart]: (state: IState) => {
             AsyncStore.set(CART_ITEMS, []);
-            return { ...state, cart : defaultState.cart.slice()}
+            return { ...state, cart: defaultState.cart.slice() }
         },
     },
-    
+
     defaultState
 );
 

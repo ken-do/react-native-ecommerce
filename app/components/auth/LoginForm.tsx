@@ -2,6 +2,7 @@ import React from 'react';
 import { Button, View, Text, TextInput, NativeSyntheticEvent, NativeTouchEvent, StyleSheet } from 'react-native';
 import { Formik, FormikProps, Form } from 'formik';
 import * as Yup from 'yup';
+
 import ILoginForm from '../../interfaces/LoginForm';
 
 interface IProps {

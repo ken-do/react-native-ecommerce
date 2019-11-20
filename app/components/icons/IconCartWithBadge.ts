@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
+
+import ICartItem from '../../interfaces/CartItem';
+
 import IconCart from './IconCart';
 import withPress from '../HOC/withPress';
 import withBadge from '../HOC/withBadge';
-import ICartItem from '../../interfaces/CartItem';
 
 const mapStateToProps = (state: { cart: ICartItem[] } ) => {
     return {

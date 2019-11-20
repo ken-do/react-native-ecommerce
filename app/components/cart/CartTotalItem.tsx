@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+
 import ICartItem from '../../interfaces/CartItem';
 
 interface IProps {

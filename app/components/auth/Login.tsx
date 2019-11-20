@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+
+import ILoginForm from '../../interfaces/LoginForm';
 
 import LoginForm from './LoginForm';
 import UserDashboard from '../user/UserDashboardContainer';
-
-import ILoginForm from '../../interfaces/LoginForm';
 
 interface IProps {
     loggedin: boolean,

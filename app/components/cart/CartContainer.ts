@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 
+import ICartItem from '../../interfaces/CartItem';
+
 import Cart from './Cart';
 import actions from '../../actions';
 import AsyncStore from '../../ultilities/AsyncStore';
 import { CART_ITEMS } from '../../constants/StoreKeys';
-
-import ICartItem from '../../interfaces/CartItem';
 
 const checkStore = async (dispatch: Dispatch) => {
     const cartItems = await AsyncStore.get(CART_ITEMS);

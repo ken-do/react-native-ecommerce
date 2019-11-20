@@ -1,9 +1,11 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Card, Title, Paragraph } from 'react-native-paper';
-import IconAddWithPress from '../icons/IconAddWithPress';
-import IProduct from '../../interfaces/Product';
 import env from 'react-native-config';
+
+import IProduct from '../../interfaces/Product';
+
+import IconAddWithPress from '../icons/IconAddWithPress';
 
 export interface IProps {
     readonly product: IProduct

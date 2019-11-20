@@ -3,10 +3,11 @@ import { ScrollView, Alert } from 'react-native';
 import axios from 'axios';
 import env from 'react-native-config';
 
-import CartTotal from '../cart/CartTotal';
-import CheckoutForm from './CheckoutForm';
 import ICartItem from '../../interfaces/CartItem';
 import IUser from '../../interfaces/User';
+
+import CartTotal from '../cart/CartTotal';
+import CheckoutForm from './CheckoutForm';
 
 interface INavigation {
     state: { params: { items: ICartItem[] } };

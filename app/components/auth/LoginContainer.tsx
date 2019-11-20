@@ -2,10 +2,11 @@ import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 
-import Login from './Login';
-import { login } from '../../actions';
 import ILoginForm from '../../interfaces/LoginForm';
 import IState from '../../interfaces/State';
+
+import Login from './Login';
+import { login } from '../../asyncActions';
 
 const mapStateToProps = (state: IState) => {
     return {
